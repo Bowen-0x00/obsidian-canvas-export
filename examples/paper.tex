@@ -1,0 +1,24 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{overpic}
+\input{canvas_graphics.tex}
+
+\title{Native Canvas Export Example}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+This figure is exported from the selected Obsidian Excalidraw canvas.
+The generated graphic macro includes the native PDF without changing its
+fonts, layout, or drawing style.
+
+\begin{figure}[htbp]
+  \centering
+  \ExampleGraphic
+  \caption{A native canvas export included through the generated wrapper.}
+  \label{fig:example}
+\end{figure}
+
+\end{document}

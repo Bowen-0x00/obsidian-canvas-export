@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "obsidian-canvas-export"
+version = "1.0.0"
+description = "Read-only native Obsidian Excalidraw exports with per-call vault selection and optional LaTeX builds"
+requires-python = ">=3.10"
+dependencies = []
+readme = "README.md"
+authors = [{name = "Bowen-0x00 contributors"}]
+license = "MIT"
+license-files = ["LICENSE"]
+keywords = ["obsidian", "excalidraw", "export", "latex"]
+classifiers = [
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Multimedia :: Graphics",
+    "Topic :: Utilities",
+]
+
+[project.urls]
+Homepage = "https://github.com/Bowen-0x00/obsidian-canvas-export"
+Documentation = "https://github.com/Bowen-0x00/obsidian-canvas-export#readme"
+Repository = "https://github.com/Bowen-0x00/obsidian-canvas-export"
+Issues = "https://github.com/Bowen-0x00/obsidian-canvas-export/issues"
+
+[project.scripts]
+canvas-export = "canvas_export.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["canvas_export"]
+namespaces = false

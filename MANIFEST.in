@@ -1,0 +1,7 @@
+include pyproject.toml
+include LICENSE
+include README.md README.zh-CN.md
+include bin/canvas-export
+recursive-include examples *.json *.tex
+recursive-include tests *.py
+global-exclude __pycache__ *.py[cod]

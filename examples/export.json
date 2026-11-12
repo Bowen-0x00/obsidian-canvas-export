@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "vault": "REPLACE_WITH_YOUR_VAULT_NAME",
+  "style": "original",
+  "formats": ["png", "svg", "pdf"],
+  "padding": 20,
+  "scale": 1.5,
+  "output_dir": "./output",
+  "latest": "latest",
+  "figures": {
+    "example": {
+      "file": "Drawings/REPLACE_WITH_YOUR_CANVAS.excalidraw.md"
+    }
+  }
+}
