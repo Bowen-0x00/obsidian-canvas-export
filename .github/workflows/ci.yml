@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.14"]
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install build tooling
+        run: python -m pip install --upgrade pip build
+      - name: Run offline unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Build source and wheel distributions
+        run: python -m build
+      - name: Smoke-test installed CLI outside checkout
+        working-directory: ${{ runner.temp }}
+        env:
+          PYTHONPATH: ""
+        run: |
+          python -m venv canvas-export-smoke
+          canvas-export-smoke/bin/python -m pip install --no-deps "$GITHUB_WORKSPACE"/dist/*.whl
+          canvas-export-smoke/bin/canvas-export --version
+          canvas-export-smoke/bin/canvas-export --help
+          canvas-export-smoke/bin/canvas-export styles --json
+          canvas-export-smoke/bin/python -m canvas_export --version
+          canvas-export-smoke/bin/python -m canvas_export --help
+          canvas-export-smoke/bin/python -m canvas_export styles --json
